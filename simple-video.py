@@ -1,3 +1,5 @@
+# Source code was copied from this web site: https://docs.opencv.org/3.1.0/dd/d43/tutorial_py_video_display.html
+
 import numpy as np
 import cv2
 
