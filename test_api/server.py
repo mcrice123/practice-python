@@ -30,11 +30,19 @@ class Employees_Name(Resource):
         query = conn.execute("select * from employees where EmployeeId =%d "  %int(employee_id))
         result = {'data': [dict(zip(tuple (query.keys()) ,i)) for i in query.cursor]}
         return jsonify(result)
+
+# Practice class 
+class Artists(Resource):
+    def get(self):
+        conn = db_connect.connect() 
+        query = conn.execute("select * from artists")
+        return {'artists': [i[0] for i in query.cursor.fetchall()]}
         
 
 api.add_resource(Employees, '/employees') # Route_1
 api.add_resource(Tracks, '/tracks') # Route_2
 api.add_resource(Employees_Name, '/employees/<employee_id>') # Route_3
+api.add_resource(Artists, '/artists')
 
 
 if __name__ == '__main__':
